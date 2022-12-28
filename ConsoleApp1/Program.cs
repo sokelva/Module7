@@ -23,15 +23,16 @@ namespace ConsoleApp1
 
         public int Counter;
         
-        public DerivedClass(string description) : base("Шкаф")
+        public DerivedClass(string name,string description) : base(name)
         {
-
+            Description = description;
         }
 
-        public DerivedClass(string description, string counter) : base("Шкаф")
+        public DerivedClass(string name, string description, int counter) : this(name, description)
         {
-            string name = base.Name;
-            Console.WriteLine("Первый параметр: {0}; второй параметр: {1}; третий параметр:{2}", Name, description, counter);
+            Counter = counter;
+            Console.WriteLine("Первый параметр: {0}; второй параметр: {1}; третий параметр:{2}", name, description, counter);
+            //Console.ReadKey();
             
         }
     }
