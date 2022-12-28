@@ -7,27 +7,33 @@ using System.Threading.Tasks;
 namespace ConsoleApp1
 {
 
-    class Obj
+    class BaseClass
     {
-        private string name;
-        private string owner;
-        private int length;
-        private int count;
+        protected string Name;
 
-        public Obj(string name, string ownerName, int objLength, int count)
+        public BaseClass(string name)
         {
-            this.name = name;
-            this.count = count;
-            owner = ownerName;
-            length = objLength;
+            Name = name;
         }
     }
-    class Program
-    {
-        static void Main(string[] args)
-        {
-      
 
+    class DerivedClass : BaseClass
+    {
+        public string Description;
+
+        public int Counter;
+        
+        public DerivedClass(string description) : base("Шкаф")
+        {
+
+        }
+
+        public DerivedClass(string description, string counter) : base("Шкаф")
+        {
+            string name = base.Name;
+            Console.WriteLine("Первый параметр: {0}; второй параметр: {1}; третий параметр:{2}", Name, description, counter);
+            
+        }
     }
-    }
+
 }
