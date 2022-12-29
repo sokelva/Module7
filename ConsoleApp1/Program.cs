@@ -36,138 +36,168 @@ namespace ConsoleApp1
 
     //    }
     //}
+    //==========================================================================
+    //class Car
+    //{
+    //    public int Mileage;
 
-    class Car
-    {
-        public int Mileage;
+    //    public Car()
+    //    {
+    //        Mileage = 0;
+    //    }
 
-        public Car()
-        {
-            Mileage = 0;
-        }
+    //    public virtual void Move()
+    //    {
+    //        Console.WriteLine("Вызван метод Move класса Car");
+    //        Mileage++;
+    //    }
+    //}
 
-        public virtual void Move()
-        {
-            Console.WriteLine("Вызван метод Move класса Car");
-            Mileage++;
-        }
-    }
+    //enum FuelType
+    //{
+    //    Gas = 0,
+    //    Electricity
+    //}
 
-    enum FuelType
-    {
-        Gas = 0,
-        Electricity
-    }
+    //class HybridCar : Car
+    //{
+    //    public FuelType FuelType;
 
-    class HybridCar : Car
-    {
-        public FuelType FuelType;
+    //    public double Gas;
 
-        public double Gas;
+    //    public double Electricity;
 
-        public double Electricity;
+    //    public HybridCar()
+    //    {
+    //        Electricity = 50;
+    //        Gas = 50;
+    //    }
 
-        public HybridCar()
-        {
-            Electricity = 50;
-            Gas = 50;
-        }
+    //    public override void Move()
+    //    {
+    //        Console.WriteLine("Вызван метод Move класса HybridCar");
+    //        Mileage++;
 
-        public override void Move()
-        {
-            Console.WriteLine("Вызван метод Move класса HybridCar");
-            Mileage++;
+    //        switch (FuelType)
+    //        {
+    //            case FuelType.Gas:
+    //                Gas -= 0.5;
+    //                break;
+    //            case FuelType.Electricity:
+    //                Electricity -= 0.5;
+    //                break;
+    //        }
+    //    }
 
-            switch (FuelType)
-            {
-                case FuelType.Gas:
-                    Gas -= 0.5;
-                    break;
-                case FuelType.Electricity:
-                    Electricity -= 0.5;
-                    break;
-            }
-        }
+    //    public void ChangeFuelType(FuelType type)
+    //    {
+    //        FuelType = type;
+    //    }
+    //}
 
-        public void ChangeFuelType(FuelType type)
-        {
-            FuelType = type;
-        }
-    }
+    //class BaseClass
+    //{
+
+    //    public virtual void Display()
+    //    {
+    //        Console.WriteLine("Метод класса BaseClass");
+    //    }
+    //}
+
+    //class DerivedClass:BaseClass
+    //{
+
+    //    public override void Display()
+    //    {
+    //        Console.WriteLine("Метод класса DerivedClass");
+    //    }
+    //}
+
+    //class Citizen
+    //{
+    //    public virtual double Age
+    //    {
+    //        get;
+    //        set;
+    //    }
+
+    //    public void SayYourAge()
+    //    {
+    //        Console.WriteLine("Мне {0} лет", Age);
+    //    }
+    //}
+
+    //class CivilServant : Citizen
+    //{
+    //    private double age;
+    //    public override double Age
+    //    {
+    //        get
+    //        {
+    //            return age;
+    //        }
+    //        set
+    //        {
+    //            if (value < 18)
+    //            {
+    //                Console.WriteLine("Для работы госслужащим гражданин должен быть не младше 18 лет");
+    //            }
+    //            else
+    //            {
+    //                age = value;
+    //            }
+    //        }
+    //    }
+    //}
+
+    //class President : CivilServant
+    //{
+    //    private double age;
+    //    public override double Age
+    //    {
+    //        get
+    //        {
+    //            return age;
+    //        }
+    //        set
+    //        {
+    //            if (value < 35)
+    //            {
+    //                Console.WriteLine("Для работы президентом гражданин должен быть не младше 35 лет");
+    //            }
+    //            else
+    //            {
+    //                age = value;
+    //            }
+    //        }
+    //    }
+    //}
+    //=======================================================================
 
     class BaseClass
     {
-
-        public virtual void Display()
-        {
-            Console.WriteLine("Метод класса BaseClass");
-        }
-    }
-
-    class DerivedClass:BaseClass
-    {
-
-        public override void Display()
-        {
-            Console.WriteLine("Метод класса DerivedClass");
-        }
-    }
-
-    class Citizen
-    {
-        public virtual double Age
+        public virtual int Counter
         {
             get;
             set;
         }
-
-        public void SayYourAge()
-        {
-            Console.WriteLine("Мне {0} лет", Age);
-        }
     }
 
-    class CivilServant : Citizen
+    class DerivedClass : BaseClass
     {
-        private double age;
-        public override double Age
+        private int counter;
+
+        public override int Counter 
         {
             get
             {
-                return age;
+                return counter;
             }
             set
             {
-                if (value < 18)
+                if (value >= 0)
                 {
-                    Console.WriteLine("Для работы госслужащим гражданин должен быть не младше 18 лет");
-                }
-                else
-                {
-                    age = value;
-                }
-            }
-        }
-    }
-
-    class President : CivilServant
-    {
-        private double age;
-        public override double Age
-        {
-            get
-            {
-                return age;
-            }
-            set
-            {
-                if (value < 35)
-                {
-                    Console.WriteLine("Для работы президентом гражданин должен быть не младше 35 лет");
-                }
-                else
-                {
-                    age = value;
+                    counter = value;
                 }
             }
         }
