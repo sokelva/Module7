@@ -204,23 +204,65 @@ namespace ConsoleApp1
     //}
 
     //==========================================================================
-    class BaseClass
+    //class BaseClass
+    //{
+    //    public virtual void Display()
+    //    {
+    //        Console.WriteLine("Метод класса BaseClass");
+    //    }
+    //}
+
+    //class DerivedClass : BaseClass
+    //{
+
+    //    public override void Display()
+    //    {
+    //        base.Display();
+    //        //DerivedClass obj = new DerivedClass();
+    //        //obj.Display();
+    //        Console.WriteLine("Метод класса DerivedClass");
+    //    }
+    //}
+    //==================================================================================
+    //Задание 7.2.7
+
+    class A
     {
         public virtual void Display()
         {
-            Console.WriteLine("Метод класса BaseClass");
+            Console.WriteLine("Класс А");
         }
     }
 
-    class DerivedClass : BaseClass
+    class B:A
     {
-        
+        public new void Display()
+        {
+            Console.WriteLine("Класс B");
+        }
+    }
+
+    class C:A
+    {
         public override void Display()
         {
-            base.Display();
-            //DerivedClass obj = new DerivedClass();
-            //obj.Display();
-            Console.WriteLine("Метод класса DerivedClass");
+            Console.WriteLine("Класс C");
+        }
+    }
+
+    class D:B
+    {
+        public new void Display()
+        {
+            Console.WriteLine("Класс D");
+        }
+    }
+
+    class E:C
+    {
+        public new void Display()
+        {
+            Console.WriteLine("Класс E");
         }
     }
 
