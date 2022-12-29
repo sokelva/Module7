@@ -7,33 +7,109 @@ using System.Threading.Tasks;
 namespace ConsoleApp1
 {
 
-    class BaseClass
-    {
-        protected string Name;
+    //class BaseClass
+    //{
+    //    protected string Name;
 
-        public BaseClass(string name)
+    //    public BaseClass(string name)
+    //    {
+    //        Name = name;
+    //    }
+    //}
+
+    //class DerivedClass : BaseClass
+    //{
+    //    public string Description;
+
+    //    public int Counter;
+
+    //    public DerivedClass(string name,string description) : base(name)
+    //    {
+    //        Description = description;
+    //    }
+
+    //    public DerivedClass(string name, string description, int counter) : this(name, description)
+    //    {
+    //        Counter = counter;
+    //        Console.WriteLine("Первый параметр: {0}; второй параметр: {1}; третий параметр:{2}", name, description, counter);
+    //        //Console.ReadKey();
+
+    //    }
+    //}
+
+    class Car
+    {
+        public int Mileage;
+
+        public Car()
         {
-            Name = name;
+            Mileage = 0;
+        }
+
+        public virtual void Move()
+        {
+            Console.WriteLine("Вызван метод Move класса Car");
+            Mileage++;
         }
     }
 
-    class DerivedClass : BaseClass
+    enum FuelType
     {
-        public string Description;
+        Gas = 0,
+        Electricity
+    }
 
-        public int Counter;
-        
-        public DerivedClass(string name,string description) : base(name)
+    class HybridCar : Car
+    {
+        public FuelType FuelType;
+
+        public double Gas;
+
+        public double Electricity;
+
+        public HybridCar()
         {
-            Description = description;
+            Electricity = 50;
+            Gas = 50;
         }
 
-        public DerivedClass(string name, string description, int counter) : this(name, description)
+        public override void Move()
         {
-            Counter = counter;
-            Console.WriteLine("Первый параметр: {0}; второй параметр: {1}; третий параметр:{2}", name, description, counter);
-            //Console.ReadKey();
-            
+            Console.WriteLine("Вызван метод Move класса HybridCar");
+            Mileage++;
+
+            switch (FuelType)
+            {
+                case FuelType.Gas:
+                    Gas -= 0.5;
+                    break;
+                case FuelType.Electricity:
+                    Electricity -= 0.5;
+                    break;
+            }
+        }
+
+        public void ChangeFuelType(FuelType type)
+        {
+            FuelType = type;
+        }
+    }
+
+    class BaseClass
+    {
+
+        public virtual void Display()
+        {
+            Console.WriteLine("Метод класса BaseClass");
+        }
+    }
+
+    class DerivedClass:BaseClass
+    {
+
+        public override void Display()
+        {
+            Console.WriteLine("Метод класса DerivedClass");
         }
     }
 
