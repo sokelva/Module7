@@ -388,27 +388,114 @@ namespace ConsoleApp1
     //    }
     //}
 
-    class IndexingClass
+    //class IndexingClass
+    //{
+    //    private int[] array;
+
+    //    public IndexingClass(int[] array)
+    //    {
+    //        this.array = array;
+    //    }
+
+    //    //ИНДЕКСАТОР ПО МАССИВУ
+    //    public int this[int index]
+    //    {
+    //        get
+    //        {
+    //            return array[index];
+    //        }
+    //        set
+    //        {
+    //            array[index] = value;
+    //        }
+    //    }
+
+    //}
+
+    ////--------------------------------------------------
+    //// Абстрактные классы
+    //abstract class A
+    //{
+
+    //}
+
+    //class B:A
+    //{
+    //    //A a = new A(); - ошибка - запрещена инициализация
+    //}
+
+    //---------------------------------------------------
+
+    //abstract class FourLeggedAnimal
+    //{
+    //    public abstract void Describe();
+    //}
+
+    //class Dog : FourLeggedAnimal
+    //{
+    //    public override void Describe()
+    //    {
+    //        Console.WriteLine("Это животное - собака");
+    //    }
+    //}
+
+    //class Cat : FourLeggedAnimal
+    //{
+    //    public override void Describe()
+    //    {
+    //        Console.WriteLine("Это животное - кошка");
+    //    }
+    //}
+
+    //abstract class A
+    //{
+    //    public abstract void GetAnstr();
+    //}
+
+    //class B : A
+    //{
+    //    public override void GetAnstr()
+    //    {
+    //        Console.WriteLine("Класс B");
+    //    }
+    //}
+
+    //class C : A
+    //{
+    //    public override void GetAnstr()
+    //    {
+    //        Console.WriteLine("Класс C");
+    //    }
+    //}
+    //-----------------------------------------------------------------
+    //Задание 7.3.3
+
+    abstract class ComputerPart
     {
-        private int[] array;
+        public abstract void Work();
+    }
 
-        public IndexingClass(int[] array)
+    class Processor : ComputerPart
+    {
+        public override void Work()
         {
-            this.array = array;
+            
         }
+    }
 
-        //ИНДЕКСАТОР ПО МАССИВУ
-        public int this[int index]
+    class MotherBoard : ComputerPart
+    {
+        public override void Work()
         {
-            get
-            {
-                return array[index];
-            }
-            set
-            {
-                array[index] = value;
-            }
-        }
 
+        }
+    }
+
+    class GraphicCard : ComputerPart
+    {
+        public override void Work()
+        {
+
+        }
     }
 }
