@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            D d = new D();
-            E e = new E();
+    //class Program
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        D d = new D();
+    //        E e = new E();
 
-            d.Display();
-            ((A)e).Display();
-            ((B)d).Display();
-            ((A)d).Display();
-            Console.ReadKey();
-        }
-    }
+    //        d.Display();
+    //        ((A)e).Display();
+    //        ((B)d).Display();
+    //        ((A)d).Display();
+    //        Console.ReadKey();
+    //    }
+    //}
 
     //class BaseClass
     //{
@@ -239,47 +239,67 @@ namespace ConsoleApp1
     //}
     //==================================================================================
     //Задание 7.2.7
+    //class A
+    //{
+    //    public virtual void Display()
+    //    {
+    //        Console.WriteLine("Класс А");
+    //    }
+    //}
 
+    //class B:A
+    //{
+    //    public new void Display()
+    //    {
+    //        Console.WriteLine("Класс B");
+    //    }
+    //}
 
+    //class C:A
+    //{
+    //    public override void Display()
+    //    {
+    //        Console.WriteLine("Класс C");
+    //    }
+    //}
 
-    class A
+    //class D:B
+    //{
+    //    public new void Display()
+    //    {
+    //        Console.WriteLine("Класс D");
+    //    }
+    //}
+
+    //class E:C
+    //{
+    //    public new void Display()
+    //    {
+    //        Console.WriteLine("Класс E");
+    //    }
+    //}
+    //===================================================================
+    //Задание 7.2.12
+
+    class Obj
     {
-        public virtual void Display()
-        {
-            Console.WriteLine("Класс А");
-        }
-    }
+        public int Value;
 
-    class B:A
-    {
-        public new void Display()
+        public static Obj operator +(Obj a, Obj b)
         {
-            Console.WriteLine("Класс B");
+            return new Obj
+            {
+                Value = a.Value + b.Value
+            };
         }
-    }
 
-    class C:A
-    {
-        public override void Display()
+        public static Obj operator -(Obj a, Obj b)
         {
-            Console.WriteLine("Класс C");
+            return new Obj
+            {
+                Value = a.Value-b.Value
+            };
         }
-    }
 
-    class D:B
-    {
-        public new void Display()
-        {
-            Console.WriteLine("Класс D");
-        }
     }
-
-    class E:C
-    {
-        public new void Display()
-        {
-            Console.WriteLine("Класс E");
-        }
-    }
-
 }
