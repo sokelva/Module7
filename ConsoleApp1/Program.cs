@@ -174,32 +174,53 @@ namespace ConsoleApp1
     //}
     //=======================================================================
 
+    //class BaseClass
+    //{
+    //    public virtual int Counter
+    //    {
+    //        get;
+    //        set;
+    //    }
+    //}
+
+    //class DerivedClass : BaseClass
+    //{
+    //    private int counter;
+
+    //    public override int Counter 
+    //    {
+    //        get
+    //        {
+    //            return counter;
+    //        }
+    //        set
+    //        {
+    //            if (value >= 0)
+    //            {
+    //                counter = value;
+    //            }
+    //        }
+    //    }
+    //}
+
+    //==========================================================================
     class BaseClass
     {
-        public virtual int Counter
+        public virtual void Display()
         {
-            get;
-            set;
+            Console.WriteLine("Метод класса BaseClass");
         }
     }
 
     class DerivedClass : BaseClass
     {
-        private int counter;
-
-        public override int Counter 
+        
+        public override void Display()
         {
-            get
-            {
-                return counter;
-            }
-            set
-            {
-                if (value >= 0)
-                {
-                    counter = value;
-                }
-            }
+            base.Display();
+            //DerivedClass obj = new DerivedClass();
+            //obj.Display();
+            Console.WriteLine("Метод класса DerivedClass");
         }
     }
 
