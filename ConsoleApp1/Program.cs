@@ -285,7 +285,7 @@ namespace ConsoleApp1
     {
         public int Value;
 
-        public static Obj operator +(Obj a, Obj b)
+        public static Obj operator + (Obj a, Obj b)
         {
             return new Obj
             {
@@ -293,11 +293,11 @@ namespace ConsoleApp1
             };
         }
 
-        public static Obj operator -(Obj a, Obj b)
+        public static Obj operator - (Obj a, Obj b)
         {
             return new Obj
             {
-                Value = a.Value-b.Value
+                Value = a.Value - b.Value
             };
         }
 
