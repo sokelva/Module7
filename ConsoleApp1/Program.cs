@@ -316,7 +316,8 @@ namespace ConsoleApp1
 
         public BookCollection(Book[] collection)
         {
-            this.collection = collection;
+            this.collection = collection; // this указывает на private Book[] collection;
+
         }
 
         // Индексатор по массиву
