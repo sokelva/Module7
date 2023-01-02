@@ -525,38 +525,38 @@ namespace ConsoleApp1
     //        Console.ReadKey();
     //    }
 
-    class Car
-    {
-        public static int MinPrice = 100_000;
-        public static int MaxPrice;
-
-        static Car()
+        class Car
         {
-            Console.WriteLine("Вызван статический конструктор класса Car");
-            MaxPrice = 1_000_000;
+            public static int MinPrice = 100_000;
+            public static int MaxPrice;
+
+            static Car()
+            {
+                Console.WriteLine("Вызван статический конструктор класса Car");
+                MaxPrice = 1_000_000;
+            }
+
+            public int Price;
         }
 
-        public int Price;
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
+        class Program
         {
-            //Car car = new Car();
+            static void Main(string[] args)
+            {
+                //Car car = new Car();
 
-            //Console.WriteLine(Car.MinPrice);
+                //Console.WriteLine(Car.MinPrice);
 
-            //Console.WriteLine(Car.MaxPrice);
+                //Console.WriteLine(Car.MaxPrice);
 
-            //Console.ReadKey();
+                //Console.ReadKey();
 
-            string str = "Hello";
-            Console.WriteLine(str.GetLastChar());
+                string str = "Hello";
+                Console.WriteLine(str.GetLastChar());
 
-            Console.WriteLine("Строка".GetLastChar());
+                Console.WriteLine("Строка".GetLastChar());
+            }
         }
-    }
 
     //public static void Main(string[] args)
     //{
