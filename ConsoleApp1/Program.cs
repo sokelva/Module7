@@ -614,9 +614,14 @@ namespace ConsoleApp1
     //    }
     //}
 
-    class Car<T>
+    class Car<T1>
     {
-        public T Engine;
+        public T1 Engine;
+
+        public virtual void ChangePart<T2>(T2 ChangePart)
+        {
+
+        }
     }
 
     class ElectricEngine
@@ -628,10 +633,33 @@ namespace ConsoleApp1
     {
 
     }
-    //
-    class Generic<T>
+
+    class Battery
     {
-        public T Field = default(T); // Поле типа T
+
     }
+
+    class Differential
+    {
+
+    }
+
+    class Wheel
+    {
+
+    }
+
+    //
+    //class Generic<T>
+    //{
+    //    public T Field = default(T); // Поле типа T
+    //}
+
+    //class Record<T1, T2>
+    //{
+    //    public T1 ID;
+    //    public DateTime Date;
+    //    public T2 Value;
+    //}
 
 }
