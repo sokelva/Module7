@@ -70,7 +70,7 @@ namespace ConsoleApp1
 
         public virtual void DeliveryInfo(string Type, string Address) { }
 
-        public void DeliveryType(string Type, string Address)
+        public void DeliveryType(string Type)
         {
             this.Type = Type;
             Display(this.Type);
