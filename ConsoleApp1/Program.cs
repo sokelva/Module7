@@ -470,32 +470,41 @@ namespace ConsoleApp1
     //-----------------------------------------------------------------
     //Задание 7.3.3
 
-    abstract class ComputerPart
-    {
-        public abstract void Work();
-    }
+    //abstract class ComputerPart
+    //{
+    //    public abstract void Work();
+    //}
 
-    class Processor : ComputerPart
-    {
-        public override void Work()
-        {
+    //class Processor : ComputerPart
+    //{
+    //    public override void Work()
+    //    {
             
-        }
-    }
+    //    }
+    //}
 
-    class MotherBoard : ComputerPart
+    //class MotherBoard : ComputerPart
+    //{
+    //    public override void Work()
+    //    {
+
+    //    }
+    //}
+
+    //class GraphicCard : ComputerPart
+    //{
+    //    public override void Work()
+    //    {
+
+    //    }
+    //}
+
+    class Obj
     {
-        public override void Work()
-        {
+        public string Name;
+        public string Description;
 
-        }
-    }
+        public static int MaxValue = 2000;
 
-    class GraphicCard : ComputerPart
-    {
-        public override void Work()
-        {
-
-        }
     }
 }
