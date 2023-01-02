@@ -614,37 +614,48 @@ namespace ConsoleApp1
     //    }
     //}
 
-    class Car<T1>
+    class Engine
     {
-        public T1 Engine;
 
-        public virtual void ChangePart<T2>(T2 ChangePart)
+    }
+
+    class Car<TEngine> where TEngine : Engine
+            
+    {
+        public TEngine Engine;
+
+        public virtual void ChangePart<TPart>(TPart newPart) where TPart : CarPart
         {
 
         }
     }
 
-    class ElectricEngine
+    class CarPart
     {
 
     }
 
-    class GasEngine
+    class ElectricEngine: Engine
     {
 
     }
 
-    class Battery
+    class GasEngine: Engine
     {
 
     }
 
-    class Differential
+    class Battery: CarPart
     {
 
     }
 
-    class Wheel
+    class Differential : CarPart
+    {
+
+    }
+
+    class Wheel : CarPart
     {
 
     }
