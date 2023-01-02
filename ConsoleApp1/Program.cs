@@ -39,7 +39,7 @@ namespace ConsoleApp1
         }
     }
 
-    class Delivery : DeliveryVariant
+    class Delivery : DeliveryVariant //base
     {
         public string Address;
         public string Type;
@@ -61,7 +61,7 @@ namespace ConsoleApp1
             Console.WriteLine("Так как был выбран тип доставки {0}", type);
         }
 
-        public void DeliveryType(string Type, string Address)
+        public virtual void DeliveryType(string Type, string Address)
         {
             this.Type = Type;
             this.Address = Address;
@@ -70,12 +70,15 @@ namespace ConsoleApp1
             {
                 case "HomeDelivery":
                     HomeDelivery hd = new HomeDelivery();
+                    hd.DeliveryType(this.Type, this.Address);
                     break;
                 case "PickPointDelivery":
                     PickPointDelivery ppd = new PickPointDelivery();
+                    ppd.DeliveryType(this.Type, this.Address);
                     break;
                 case "ShopDelivery":
                     ShopDelivery sd = new ShopDelivery();
+                    sd.DeliveryType(this.Type, this.Address);
                     break;
             }
         }
@@ -88,6 +91,11 @@ namespace ConsoleApp1
         {
             Console.WriteLine("Доставка осуществляется типом {0} на адрес: {1}", base.Type, base.Address);
         }
+
+        public override void DeliveryType(string type, string address)
+        {
+            Console.WriteLine("Заказ будет доставлен с 10:00 до 22:00.\nБлагодарим за ваш заказ!");
+        }
     }
 
     class PickPointDelivery : Delivery
@@ -96,6 +104,11 @@ namespace ConsoleApp1
         {
             Console.WriteLine("Доставка осуществляется типом {0} на адрес: {1}", base.Type, base.Address);
         }
+
+        public override void DeliveryType(string type, string address)
+        {
+            Console.WriteLine("Забрать заказ вы можете с 10:00 до 22:00.\nБлагодарим за ваш заказ!");
+        }
     }
 
     class ShopDelivery : Delivery
@@ -103,6 +116,11 @@ namespace ConsoleApp1
         public ShopDelivery()
         {
             Console.WriteLine("Адрес самовывоза: ", base.Address);
+        }
+
+        public override void DeliveryType(string type, string address)
+        {
+            Console.WriteLine("Выдача заказов осуществлется с 10:00 до 22:00.\nБлагодарим за ваш заказ и ждем вас снова!");
         }
     }
 
@@ -113,6 +131,16 @@ namespace ConsoleApp1
         public int Number;
 
         public string Description;
+
+        public Order()
+        {
+            Console.WriteLine("Инормация о заказе:");
+        }
+
+        public Order(string manager, string number) : this()
+        {
+            Console.WriteLine("Вас обслуживал {0}:", manager);
+        }
 
         public void DisplayAddress()
         {
