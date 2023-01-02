@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyProduct;
 
 
 namespace ConsoleApp1
@@ -12,6 +13,10 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
 
+            //Product p = new Product();
+            //p.ProductBuy("");
+            //-------------------------------------
+            //Доставка заказа
             Console.WriteLine("Введите тип доставки из представленных:");
             Delivery del = new Delivery();
             string type = Console.ReadLine();
@@ -26,6 +31,8 @@ namespace ConsoleApp1
     {
         public string[] DeliveryVar;
 
+        public abstract void Display(string type);
+
         public DeliveryVariant()
         {
             DeliveryVar  = new string [3] { "HomeDelivery", "PickPointDelivery", "ShopDelivery"};
@@ -33,7 +40,7 @@ namespace ConsoleApp1
     }
 
     class Delivery : DeliveryVariant
-{
+    {
         public string Address;
         public string Type;
         public DateTime DateOfDelivery;
@@ -49,16 +56,28 @@ namespace ConsoleApp1
             }
         }
 
-        //public Delivery(string Type, string Address) : this()
-        //{
-        //    //Условия для get;set для ShopDelivery
-        //    this.Type = Type;
-        //    this.Address = Address;
-        //}
+        public override void Display(string type) //переопределение абстрактного класса
+        {
+            Console.WriteLine("Так как был выбран тип доставки {0}", type);
+        }
 
         public void DeliveryType(string Type, string Address)
         {
-            
+            this.Type = Type;
+            this.Address = Address;
+            Display(this.Type);
+            switch (this.Type)
+            {
+                case "HomeDelivery":
+                    HomeDelivery hd = new HomeDelivery();
+                    break;
+                case "PickPointDelivery":
+                    PickPointDelivery ppd = new PickPointDelivery();
+                    break;
+                case "ShopDelivery":
+                    ShopDelivery sd = new ShopDelivery();
+                    break;
+            }
         }
     }
 
@@ -104,21 +123,21 @@ namespace ConsoleApp1
     }
 
 
-    /// <summary>
-    /// Продукт
-    /// </summary>
-    abstract class Product
-    {
+    ///// <summary>
+    ///// Продукт
+    ///// </summary>
+    //abstract class Product
+    //{
 
-    }
+    ////}
 
-    /// <summary>
-    /// Категория продукта
-    /// </summary>
-    class CategotyProduct : Product
-    {
+    ///// <summary>
+    ///// Категория продукта
+    ///// </summary>
+    //class CategotyProduct : Product
+    //{
 
-    }
+    //}
 
     /// <summary>
     /// Кассовый чек
@@ -128,11 +147,11 @@ namespace ConsoleApp1
 
     }
 
-    /// <summary>
-    /// Менеджер
-    /// </summary>
-    class Employee
-    {
-        public string Manager;
-    }
+    ///// <summary>
+    ///// Менеджер
+    ///// </summary>
+    //class Employee
+    //{
+    //    public string Manager;
+    //}
 }
