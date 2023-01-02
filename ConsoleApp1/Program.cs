@@ -16,12 +16,12 @@ namespace ConsoleApp1
             //Product p = new Product();
             //p.ProductBuy("");
             //-------------------------------------
+            Delivery del = new Delivery();
+            del.DeliveryShow();
+
             //Доставка заказа
             Console.WriteLine("Введите тип доставки из представленных:");
-            Delivery del = new Delivery();
             string type = Console.ReadLine();
-            Console.WriteLine("Введите адрес для доставки.");
-            string address = Console.ReadLine();
             del.DeliveryType(type, address);
         }
     }
@@ -47,53 +47,68 @@ namespace ConsoleApp1
 
         public Delivery(): base()
         {
-            //Console.WriteLine("Доставка осуществляется 3 способами:");
+        }
+
+        public void DeliveryShow()
+        {
+            Console.WriteLine("Доставка осуществляется 3 способами:");
             int i = 1;
             foreach (var item in DeliveryVar)
             {
-                Console.WriteLine("{0}: {1}", i,item);
+                Console.WriteLine("{0}: {1}", i, item);
                 i++;
             }
         }
 
         public override void Display(string type) //переопределение абстрактного класса
         {
-            Console.WriteLine("Так как был выбран тип доставки {0}", type);
+            if(type == DeliveryVar[2])
+            {
+                Console.WriteLine("Так как был выбран тип доставки {0}", type);
+            }
         }
 
-        public virtual void DeliveryType(string Type, string Address)
+        public virtual void DeliveryInfo(string Type, string Address) { }
+
+        public void DeliveryType(string Type, string Address)
         {
             this.Type = Type;
-            this.Address = Address;
             Display(this.Type);
             switch (this.Type)
             {
                 case "HomeDelivery":
                     HomeDelivery hd = new HomeDelivery();
-                    hd.DeliveryType(this.Type, this.Address);
+                    Console.WriteLine("Введите адрес для доставки.");
+                    this.Address = Console.ReadLine();
+                    hd.DeliveryInfo(this.Type, this.Address);
                     break;
                 case "PickPointDelivery":
                     PickPointDelivery ppd = new PickPointDelivery();
-                    ppd.DeliveryType(this.Type, this.Address);
+                    Console.WriteLine("Введите адрес для доставки.");
+                    this.Address = Console.ReadLine();
+                    ppd.DeliveryInfo(this.Type, this.Address);
                     break;
                 case "ShopDelivery":
                     ShopDelivery sd = new ShopDelivery();
-                    sd.DeliveryType(this.Type, this.Address);
+                    sd.DeliveryInfo();
                     break;
             }
+            Console.ReadKey();
         }
     }
 
     //Использование наследования;
-    class HomeDelivery : Delivery
+    class HomeDelivery: Delivery
     {
         public HomeDelivery()
         {
-            Console.WriteLine("Доставка осуществляется типом {0} на адрес: {1}", base.Type, base.Address);
+
         }
 
-        public override void DeliveryType(string type, string address)
+        public override void DeliveryInfo(string type, string address)
         {
+            
+            Console.WriteLine("Доставка осуществляется типом {0} на адрес: {1}", type, address);
             Console.WriteLine("Заказ будет доставлен с 10:00 до 22:00.\nБлагодарим за ваш заказ!");
         }
     }
@@ -102,24 +117,25 @@ namespace ConsoleApp1
     {
         public PickPointDelivery()
         {
-            Console.WriteLine("Доставка осуществляется типом {0} на адрес: {1}", base.Type, base.Address);
         }
 
-        public override void DeliveryType(string type, string address)
+        public override void DeliveryInfo(string type, string address)
         {
+            Console.WriteLine("Доставка осуществляется типом {0} на адрес: {1}", type, address);
             Console.WriteLine("Забрать заказ вы можете с 10:00 до 22:00.\nБлагодарим за ваш заказ!");
         }
     }
 
     class ShopDelivery : Delivery
-    {
+    { 
         public ShopDelivery()
         {
-            Console.WriteLine("Адрес самовывоза: ", base.Address);
+            
         }
 
-        public override void DeliveryType(string type, string address)
+        public override void DeliveryInfo(string type = null, string address = "г.Москва, Мясищева 20")
         {
+            Console.WriteLine("Адрес самовывоза: {0}", address);
             Console.WriteLine("Выдача заказов осуществлется с 10:00 до 22:00.\nБлагодарим за ваш заказ и ждем вас снова!");
         }
     }
