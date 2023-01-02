@@ -614,12 +614,12 @@ namespace ConsoleApp1
     //    }
     //}
 
-    class Engine
+    abstract  class Engine
     {
 
     }
 
-    class Car<TEngine> where TEngine : Engine
+    abstract class Car<TEngine> where TEngine : Engine
             
     {
         public TEngine Engine;
@@ -630,7 +630,17 @@ namespace ConsoleApp1
         }
     }
 
-    class CarPart
+    class GasCar
+    {
+
+    }
+
+    class ElectricCar
+    {
+
+    }
+
+    abstract class CarPart
     {
 
     }
