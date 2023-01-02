@@ -628,5 +628,10 @@ namespace ConsoleApp1
     {
 
     }
+    //
+    class Generic<T>
+    {
+        public T Field = default(T); // Поле типа T
+    }
 
 }
