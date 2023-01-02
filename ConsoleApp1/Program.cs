@@ -507,4 +507,31 @@ namespace ConsoleApp1
         public static int MaxValue = 2000;
 
     }
+
+
+    static class IntExtensions
+    {
+        public static int GetNegative(this int number)
+        {
+            if (number > 0)
+            {
+                return -number;
+            }
+            else
+            {
+                return number;
+            }
+        }
+        public static int GetPositive(this int number)
+        {
+            if (number < 0)
+            {
+                return -number;
+            }
+            else
+            {
+                return number;
+            }
+        }
+    }
 }
