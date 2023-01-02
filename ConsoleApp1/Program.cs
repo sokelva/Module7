@@ -479,7 +479,7 @@ namespace ConsoleApp1
     //{
     //    public override void Work()
     //    {
-            
+
     //    }
     //}
 
@@ -499,15 +499,94 @@ namespace ConsoleApp1
     //    }
     //}
 
-    class Obj
+    //class Obj
+    //{
+    //    public string Name;
+    //    public string Description;
+
+    //    public static int MaxValue = 2000;
+
+    //}
+    //------------------------Задание 7.5.3 
+    //class Helper
+    //{
+    //    public static int num1 = 3;
+    //    public static int num2 = 58;
+
+    //    public static void Swap(ref int num1, ref int num2)
+    //    {
+
+    //        int temp = num1;
+    //        num1 = num2;
+    //        num2 = temp;
+    //        Console.WriteLine(num1);
+    //        Console.WriteLine(num2);
+
+    //        Console.ReadKey();
+    //    }
+
+    class Car
     {
-        public string Name;
-        public string Description;
+        public static int MinPrice = 100_000;
+        public static int MaxPrice;
 
-        public static int MaxValue = 2000;
+        static Car()
+        {
+            Console.WriteLine("Вызван статический конструктор класса Car");
+            MaxPrice = 1_000_000;
+        }
 
+        public int Price;
     }
 
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Car car = new Car();
+
+            //Console.WriteLine(Car.MinPrice);
+
+            //Console.WriteLine(Car.MaxPrice);
+
+            //Console.ReadKey();
+
+            string str = "Hello";
+            Console.WriteLine(str.GetLastChar());
+
+            Console.WriteLine("Строка".GetLastChar());
+        }
+    }
+
+    //public static void Main(string[] args)
+    //{
+    //    Swap(ref num1,ref num2);
+    //}
+
+    //class Obj
+    //{
+    //    public string Name;
+    //    public string Description;
+
+    //    public static string Parent;
+    //    public static int DaysInWeek;
+    //    public static int MaxValue;
+
+    //    static Obj()
+    //    {
+    //        Parent = "System.Object";
+    //        DaysInWeek = 7;
+    //        MaxValue = 2000;
+    //    }
+    //}
+
+    static class StringExtensions
+    {
+        public static char GetLastChar(this string source)
+        {
+            return source[source.Length - 1];
+        }
+    }
 
     static class IntExtensions
     {
@@ -534,4 +613,5 @@ namespace ConsoleApp1
             }
         }
     }
+
 }
