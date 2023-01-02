@@ -525,38 +525,38 @@ namespace ConsoleApp1
     //        Console.ReadKey();
     //    }
 
-    class Car
-    {
-        public static int MinPrice = 100_000;
-        public static int MaxPrice;
+    //class Car
+    //{
+    //    public static int MinPrice = 100_000;
+    //    public static int MaxPrice;
 
-        static Car()
-        {
-            Console.WriteLine("Вызван статический конструктор класса Car");
-            MaxPrice = 1_000_000;
-        }
+    //    static Car()
+    //    {
+    //        Console.WriteLine("Вызван статический конструктор класса Car");
+    //        MaxPrice = 1_000_000;
+    //    }
 
-        public int Price;
-    }
+    //    public int Price;
+    //}
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            //Car car = new Car();
+    //class Program
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        //Car car = new Car();
 
-            //Console.WriteLine(Car.MinPrice);
+    //        //Console.WriteLine(Car.MinPrice);
 
-            //Console.WriteLine(Car.MaxPrice);
+    //        //Console.WriteLine(Car.MaxPrice);
 
-            //Console.ReadKey();
+    //        //Console.ReadKey();
 
-            string str = "Hello";
-            Console.WriteLine(str.GetLastChar());
+    //        string str = "Hello";
+    //        Console.WriteLine(str.GetLastChar());
 
-            Console.WriteLine("Строка".GetLastChar());
-        }
-    }
+    //        Console.WriteLine("Строка".GetLastChar());
+    //    }
+    //}
 
     //public static void Main(string[] args)
     //{
@@ -580,38 +580,53 @@ namespace ConsoleApp1
     //    }
     //}
 
-    static class StringExtensions
+    //static class StringExtensions
+    //{
+    //    public static char GetLastChar(this string source)
+    //    {
+    //        return source[source.Length - 1];
+    //    }
+    //}
+
+    //static class IntExtensions
+    //{
+    //    public static int GetNegative(this int number)
+    //    {
+    //        if (number > 0)
+    //        {
+    //            return -number;
+    //        }
+    //        else
+    //        {
+    //            return number;
+    //        }
+    //    }
+    //    public static int GetPositive(this int number)
+    //    {
+    //        if (number < 0)
+    //        {
+    //            return -number;
+    //        }
+    //        else
+    //        {
+    //            return number;
+    //        }
+    //    }
+    //}
+
+    class Car<T>
     {
-        public static char GetLastChar(this string source)
-        {
-            return source[source.Length - 1];
-        }
+        public T Engine;
     }
 
-    static class IntExtensions
+    class ElectricEngine
     {
-        public static int GetNegative(this int number)
-        {
-            if (number > 0)
-            {
-                return -number;
-            }
-            else
-            {
-                return number;
-            }
-        }
-        public static int GetPositive(this int number)
-        {
-            if (number < 0)
-            {
-                return -number;
-            }
-            else
-            {
-                return number;
-            }
-        }
+
+    }
+
+    class GasEngine
+    {
+
     }
 
 }
