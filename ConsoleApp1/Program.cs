@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyProduct;
+using MyManager;
 
 
 namespace ConsoleApp1
@@ -16,8 +17,8 @@ namespace ConsoleApp1
             Console.WriteLine("Введите нормер чека заказа.");
 
             CashReceipt crec = new CashReceipt();
-            crec.number = Convert.ToInt32(Console.ReadLine());
-            Order<Delivery> ord = new Order<Delivery>("Михаил", crec.number);
+            crec.Number = Convert.ToInt32(Console.ReadLine());
+            Order<Delivery> ord = new Order<Delivery>(crec.Number);
             ord.DisplayOrderItems();
             //-------------------------------------
             //Доставка заказа
@@ -52,6 +53,7 @@ namespace ConsoleApp1
         {
         }
 
+     
         public void DeliveryShow()
         {
             Console.WriteLine("Доставка осуществляется 3 способами:");
@@ -102,6 +104,9 @@ namespace ConsoleApp1
             Console.WriteLine("Введите адрес для доставки.");
             return Console.ReadLine();
         }
+
+        
+        
     }
 
     //Использование наследования;
@@ -153,21 +158,22 @@ namespace ConsoleApp1
     class Order<TDelivery> where TDelivery : Delivery
     {
         public TDelivery DeliveryType;
-        public string Number;
+        private Manager<string> m;
 
-       
-        
-
-        public Order(string manager, int  number)
+        public Order(int number)
         {
+            //string manager = m.ManagerName(number);// 
+            m = new Manager<string>(); // Композиция
+            m.OrderManager = m.ManagerName(number); //Один из способов применения методов обобщения
             Console.WriteLine("Инормация о заказе:");
-            Console.WriteLine("Вас обслуживал: {0}.\nВаш номер заказа: {1}.", manager, number);
+            Console.WriteLine("Вас обслуживал: {0}.\nВаш номер заказа: {1}.", m.OrderManager, number);
         }
 
         public void DisplayOrderItems()
         {
+            Product p = new Product();
             Console.WriteLine("Перечень продуктов в чеке:");
-            new Product().ProductBuy();
+            p.ProductBuy();
         }
     }
 
@@ -182,36 +188,32 @@ namespace ConsoleApp1
     /// </summary>
     class CashReceipt
     {
-        private int Number; 
+        private int number; 
 
-        public int number
+        public int Number
         {
             get
             {
-                return Number;
+                return number;
             }
 
             set
             {
-                if (value<0)
+                if (value<=0)
                 {
                     Console.WriteLine("Номер чека должен быть больше и не равен 0!");
                 }
                 else
                 {
-                    Number = value;
+                    number = value;
                 }
             }
         }
 
-        public void CashReceiptCheck<T>(T number)
-        {
+        //public void CashReceiptCheck<T>(T number)
+        //{
             
-        }
+        //}
     }
-
-
-
-    
 
 }

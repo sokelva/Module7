@@ -10,10 +10,10 @@ namespace MyProduct
     /// <summary>
     /// Продукт
     /// </summary>
-    class Product
+    class Product : CategotyProduct
     {
         private static string[] ProductList;
-        public Product()
+        public Product() : base()
         {
             ProductList = new string[5] {"Молоко","Хлеб","Овощи","Фрукты","Конфеты"};
         }
@@ -24,16 +24,17 @@ namespace MyProduct
             {
                 Console.WriteLine("{0}", item);
             }
-
-
         }
     }
 
     /// <summary>
     /// Категория товаров
     /// </summary>
-    class CategotyProduct : Product
+    abstract class CategotyProduct
     {
-
+        public CategotyProduct()
+        {
+            Console.WriteLine("ВАЖНО!Каждый продукт относится к определнной категории");
+        }
     }
 }
