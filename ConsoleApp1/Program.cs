@@ -24,9 +24,9 @@ namespace ConsoleApp1
             //Доставка заказа
             Delivery del = new Delivery();
             del.DeliveryShow();
-            
+                
             Console.WriteLine("Введите тип доставки из представленных:");
-            del.DeliveryType(Console.ReadLine());
+            del.DeliveryType(Console.ReadLine().ThisReplace());
         }
     }
 
@@ -41,6 +41,8 @@ namespace ConsoleApp1
         {
             DeliveryVar  = new string [3] { "HomeDelivery", "PickPointDelivery", "ShopDelivery"};
         }
+
+        
     }
 
     class Delivery : DeliveryVariant
@@ -104,10 +106,10 @@ namespace ConsoleApp1
             Console.WriteLine("Введите адрес для доставки.");
             return Console.ReadLine();
         }
-
-        
         
     }
+
+
 
     //Использование наследования;
     class HomeDelivery: Delivery
@@ -216,4 +218,11 @@ namespace ConsoleApp1
         //}
     }
 
+    static class CleanChars //Методы расширения
+    {
+        public static string ThisReplace(this string src)
+        {
+            return src.Replace("  ", " ").Trim();
+        }
+    }
 }
