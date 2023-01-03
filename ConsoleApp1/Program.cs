@@ -10,19 +10,18 @@ namespace ConsoleApp1
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-
             //Product p = new Product();
             //p.ProductBuy("");
             //-------------------------------------
+            //Доставка заказа
+
             Delivery del = new Delivery();
             del.DeliveryShow();
-
-            //Доставка заказа
+            
             Console.WriteLine("Введите тип доставки из представленных:");
-            string type = Console.ReadLine();
-            del.DeliveryType(type, address);
+            del.DeliveryType(Console.ReadLine());
         }
     }
 
@@ -78,14 +77,12 @@ namespace ConsoleApp1
             {
                 case "HomeDelivery":
                     HomeDelivery hd = new HomeDelivery();
-                    Console.WriteLine("Введите адрес для доставки.");
-                    this.Address = Console.ReadLine();
+                    this.Address = GetDeliveryAddress();
                     hd.DeliveryInfo(this.Type, this.Address);
                     break;
                 case "PickPointDelivery":
                     PickPointDelivery ppd = new PickPointDelivery();
-                    Console.WriteLine("Введите адрес для доставки.");
-                    this.Address = Console.ReadLine();
+                    this.Address = GetDeliveryAddress();
                     ppd.DeliveryInfo(this.Type, this.Address);
                     break;
                 case "ShopDelivery":
@@ -94,6 +91,13 @@ namespace ConsoleApp1
                     break;
             }
             Console.ReadKey();
+        }
+
+
+        private static string GetDeliveryAddress()
+        {
+            Console.WriteLine("Введите адрес для доставки.");
+            return Console.ReadLine();
         }
     }
 
@@ -107,7 +111,6 @@ namespace ConsoleApp1
 
         public override void DeliveryInfo(string type, string address)
         {
-            
             Console.WriteLine("Доставка осуществляется типом {0} на адрес: {1}", type, address);
             Console.WriteLine("Заказ будет доставлен с 10:00 до 22:00.\nБлагодарим за ваш заказ!");
         }
