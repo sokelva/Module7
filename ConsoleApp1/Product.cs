@@ -12,14 +12,19 @@ namespace MyProduct
     /// </summary>
     class Product
     {
-        public string[] ProductList;
+        private static string[] ProductList;
         public Product()
         {
             ProductList = new string[5] {"Молоко","Хлеб","Овощи","Фрукты","Конфеты"};
         }
 
-        public void ProductBuy(string name)
+        public void ProductBuy()
         {
+            foreach (var item in ProductList)
+            {
+                Console.WriteLine("{0}", item);
+            }
+
 
         }
     }

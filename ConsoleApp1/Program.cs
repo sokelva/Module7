@@ -12,11 +12,15 @@ namespace ConsoleApp1
     {
         public static void Main(string[] args)
         {
-            //Product p = new Product();
-            //p.ProductBuy("");
+            //Информация о заказе
+            Console.WriteLine("Введите нормер чека заказа.");
+
+            CashReceipt crec = new CashReceipt();
+            crec.number = Convert.ToInt32(Console.ReadLine());
+            Order<Delivery> ord = new Order<Delivery>("Михаил", crec.number);
+            ord.DisplayOrderItems();
             //-------------------------------------
             //Доставка заказа
-
             Delivery del = new Delivery();
             del.DeliveryShow();
             
@@ -38,11 +42,11 @@ namespace ConsoleApp1
         }
     }
 
-    class Delivery : DeliveryVariant //base
+    class Delivery : DeliveryVariant
     {
         public string Address;
         public string Type;
-        public DateTime DateOfDelivery;
+        //public DateTime DateOfDelivery;
 
         public Delivery(): base()
         {
@@ -93,7 +97,6 @@ namespace ConsoleApp1
             Console.ReadKey();
         }
 
-
         private static string GetDeliveryAddress()
         {
             Console.WriteLine("Введите адрес для доставки.");
@@ -143,62 +146,72 @@ namespace ConsoleApp1
         }
     }
 
-    class Order<TDelivery,TStruct> where TDelivery : Delivery 
+    /// <summary>
+    /// ЗАКАЗ ПОКУПАТЕЛЯ
+    /// </summary>
+    /// <typeparam name="TDelivery"></typeparam>
+    class Order<TDelivery> where TDelivery : Delivery
     {
-        public TDelivery Delivery;
+        public TDelivery DeliveryType;
+        public string Number;
 
-        public int Number;
+       
+        
 
-        public string Description;
-
-        public Order()
+        public Order(string manager, int  number)
         {
             Console.WriteLine("Инормация о заказе:");
+            Console.WriteLine("Вас обслуживал: {0}.\nВаш номер заказа: {1}.", manager, number);
         }
 
-        public Order(string manager, string number) : this()
+        public void DisplayOrderItems()
         {
-            Console.WriteLine("Вас обслуживал {0}:", manager);
+            Console.WriteLine("Перечень продуктов в чеке:");
+            new Product().ProductBuy();
         }
-
-        public void DisplayAddress()
-        {
-            Console.WriteLine(Delivery.Address);
-        }
-
-        // ... Другие поля
     }
 
+    struct Description
+    {
 
-    ///// <summary>
-    ///// Продукт
-    ///// </summary>
-    //abstract class Product
-    //{
+    }
 
-    ////}
-
-    ///// <summary>
-    ///// Категория продукта
-    ///// </summary>
-    //class CategotyProduct : Product
-    //{
-
-    //}
 
     /// <summary>
     /// Кассовый чек
     /// </summary>
     class CashReceipt
     {
+        private int Number; 
 
+        public int number
+        {
+            get
+            {
+                return Number;
+            }
+
+            set
+            {
+                if (value<0)
+                {
+                    Console.WriteLine("Номер чека должен быть больше и не равен 0!");
+                }
+                else
+                {
+                    Number = value;
+                }
+            }
+        }
+
+        public void CashReceiptCheck<T>(T number)
+        {
+            
+        }
     }
 
-    ///// <summary>
-    ///// Менеджер
-    ///// </summary>
-    //class Employee
-    //{
-    //    public string Manager;
-    //}
+
+
+    
+
 }

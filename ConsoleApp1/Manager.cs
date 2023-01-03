@@ -9,8 +9,11 @@ namespace Manager
     /// <summary>
     /// Менеджер
     /// </summary>
-    class Manager
+    class Manager<T>
     {
+        public Manager()
+        {
 
+        }
     }
 }
