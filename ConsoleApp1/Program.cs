@@ -7,6 +7,8 @@ using MyProduct;
 using MyManager;
 
 
+//Не до конца пока поняла использовние: Использование перегруженных операторов.
+
 namespace ConsoleApp1
 {
     class Program
@@ -27,6 +29,8 @@ namespace ConsoleApp1
                 
             Console.WriteLine("Введите тип доставки из представленных:");
             del.DeliveryType(Console.ReadLine().ThisReplace());
+
+          
         }
     }
 
@@ -41,8 +45,6 @@ namespace ConsoleApp1
         {
             DeliveryVar  = new string [3] { "HomeDelivery", "PickPointDelivery", "ShopDelivery"};
         }
-
-        
     }
 
     class Delivery : DeliveryVariant
@@ -176,6 +178,7 @@ namespace ConsoleApp1
             Product p = new Product();
             Console.WriteLine("Перечень продуктов в чеке:");
             p.ProductBuy();
+            Store store = new Store(p);
         }
     }
 

@@ -7,6 +7,18 @@ using System.Threading.Tasks;
 
 namespace MyProduct
 {
+
+    /// <summary>
+    /// Категория товаров
+    /// </summary>
+    abstract class CategotyProduct
+    {
+        public CategotyProduct()
+        {
+            Console.WriteLine("ВАЖНО!Каждый продукт относится к определнной категории");
+        }
+    }
+
     /// <summary>
     /// Продукт
     /// </summary>
@@ -27,14 +39,15 @@ namespace MyProduct
         }
     }
 
-    /// <summary>
-    /// Категория товаров
-    /// </summary>
-    abstract class CategotyProduct
+
+    class Store // Использование агрегации классов
     {
-        public CategotyProduct()
+        public Product product;
+
+        public Store(Product product)
         {
-            Console.WriteLine("ВАЖНО!Каждый продукт относится к определнной категории");
+            this.product = product;
+            Console.WriteLine("В магазине каждый продукт лежит в отведенном для этого продукта отделе!");
         }
     }
 }
